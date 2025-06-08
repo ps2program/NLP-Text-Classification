@@ -22,24 +22,19 @@ This project focuses on text classification using neural language modeling and e
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd <repository-name>
+git clone https://github.com/ps2program/NLP-Text-Classification.git
+cd NLP-Text-Classification
 ```
 
-2. Install `uv` (if not already installed):
-```bash
-pip install uv
-```
-
-3. Run the setup script:
+2. Run the setup script:
 ```bash
 python setup.py
 ```
 This will:
-- Create a virtual environment using `uv`
-- Install all required dependencies from `requirements.txt` using `uv`
+- Create a virtual environment using Python's built-in `venv`
+- Install all required dependencies from `requirements.txt` using `pip`
 
-4. Activate the virtual environment:
+3. Activate the virtual environment:
 ```bash
 # On Unix/macOS
 source ./.venv/bin/activate
@@ -50,7 +45,7 @@ source ./.venv/bin/activate
 
 ## Dependencies
 
-The project uses the following main dependencies, managed by `uv`:
+The project uses the following main dependencies:
 - numpy: For numerical computations
 - pandas: For data manipulation and analysis
 - scikit-learn: For machine learning algorithms
@@ -65,7 +60,7 @@ The project uses the following main dependencies, managed by `uv`:
 
 - `text_classification_embeddings_final.ipynb`: Main Jupyter notebook containing the implementation
 - `ScienceTopics.csv`: Dataset containing scientific topics for classification
-- `setup.py`: Automated setup script for environment and dependencies using `uv`
+- `setup.py`: Automated setup script for environment and dependencies using `venv` and `pip`
 - `requirements.txt`: List of Python package dependencies
 
 ## Usage

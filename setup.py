@@ -5,26 +5,24 @@ import sys
 from pathlib import Path
 
 def create_venv():
-    """Create a virtual environment if it doesn't exist using uv."""
-    venv_path = Path(".venv") # uv typically creates .venv
+    """Create a virtual environment if it doesn't exist using venv."""
+    venv_path = Path(".venv")
     if not venv_path.exists():
-        print("Creating virtual environment with uv...")
-        subprocess.run(["uv", "venv"], check=True)
+        print("Creating virtual environment with venv...")
+        subprocess.run([sys.executable, "-m", "venv", ".venv"], check=True)
         print("Virtual environment created successfully!")
     else:
         print("Virtual environment already exists.")
 
-def get_uv_executable():
-    """Get the uv executable from the system's PATH."""
-    return "uv"
-
 def install_requirements():
-    """Install requirements from requirements.txt using uv."""
-    # No need to check for uv_path.exists() here as uv is expected to be in PATH
-    print("Installing requirements with uv...")
+    """Install requirements from requirements.txt using pip from the venv."""
+    print("Installing requirements with pip...")
+    if sys.platform == "win32":
+        pip_executable = Path(".venv") / "Scripts" / "pip"
+    else:
+        pip_executable = Path(".venv") / "bin" / "pip"
     try:
-        # Use 'uv pip install' as a direct replacement for 'pip install'
-        subprocess.run(["uv", "pip", "install", "-r", "requirements.txt"], check=True)
+        subprocess.run([str(pip_executable), "install", "-r", "requirements.txt"], check=True)
         print("Requirements installed successfully!")
     except subprocess.CalledProcessError as e:
         print(f"Error installing requirements: {e}")
